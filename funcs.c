@@ -57,21 +57,6 @@ unsigned char twoPower(unsigned char i) // pow(2, i) clone
     return ret;
 }
 
-//void setPin(unsigned char pin, unsigned char inout, unsigned char cls)
-//{
-//    TRISC = 0b111111;
-//    if (cls == 'c')
-//    {
-//        if (!inout) TRISC += twoPower(pin);
-//        else TRISC -= twoPower(pin);
-//    }
-//    else if (cls == 'a')
-//    {
-//        if (!inout) TRISA += twoPower(pin);
-//        else TRISA -= twoPower(pin);
-//    }
-//}
-
 void errSignal()
 {
     TRISC = 0b000000;
