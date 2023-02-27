@@ -1,5 +1,6 @@
 #include "CONFIG.h"
 
+// I have to mention that I run MCU from 5V pins from Arduino Uno. Pins SDA and SCL of display are pulled-up.
 void main(void)
 {
     // I have two LEDs on pins RC3 and RC4 to check if MCU works.
