@@ -2,15 +2,19 @@
 
 void main(void)
 {
+    // I have two LEDs on pins RC3 and RC4 to check if MCU works.
     TRISC = 0b000000;
     PORTC = 0b011000;
     __delay_ms(1000);
     PORTC = 0b000000;
     
+    // Searching through Internet I found some causes to resets - PO and TO bits.
+    // Here I am checking them. Also they are negated, so LEDs must light up.
     if (__timeout && __powerdown) PORTC = 0b011000;
     else if (__timeout && !__powerdown) PORTC = 0b010000;
     else if (!__timeout && __powerdown) PORTC = 0b001000;
     __delay_ms(2000);
+    // I suppose PIC resets here 'cause LEDs blink with those periods.
     PORTC = 0b000000;
     
     i2cBegin();
