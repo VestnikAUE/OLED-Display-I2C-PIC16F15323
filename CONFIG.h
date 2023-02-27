@@ -46,7 +46,6 @@
 
 #include <xc.h>
 
-#include "funcs.h"
 #include "i2c.h"
 
 #endif	/* XC_HEADER_TEMPLATE_H */
