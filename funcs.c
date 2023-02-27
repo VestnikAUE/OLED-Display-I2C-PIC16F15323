@@ -1,28 +1,5 @@
 #include "funcs.h"
 
-void setClock(unsigned char freq)
-{
-    if (freq == 4)
-    {
-        OSCEN = 0b10000000;
-        OSCCON1bits.NOSC = 0b111;
-        OSCCON1bits.NDIV = 0b1001;
-        OSCFRQbits.HFFRQ = 0b010;
-        #undef _XTAL_FREQ
-        #define _XTAL_FREQ 4000000
-    }
-    else if (freq == 32)
-    {
-        OSCEN = 0b01000000;
-        OSCCON1bits.NOSC = 0b110;
-        OSCCON1bits.NDIV = 0b1001;
-        OSCFRQbits.HFFRQ = 0b110;
-        #undef _XTAL_FREQ
-        #define _XTAL_FREQ 32000000
-    }
-    GIE = 0;
-}
-
 void setArr(unsigned char* arr, unsigned char c, unsigned char size) // memset clone
 { 
     for (unsigned char i = 0; i < size; i++)
