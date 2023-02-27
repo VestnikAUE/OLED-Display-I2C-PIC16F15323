@@ -1,6 +1,6 @@
 #include "i2c.h"
 
-void checkAck()
+void checkAck() // Check acknowledge bit
 {
     SSP1CON2bits.ACKEN = 1;
     SSP1CON2bits.ACKDT = 0;
@@ -26,19 +26,19 @@ void checkAck()
 
 void i2cBegin()
 {
-    SSP1CON1bits.SSPM = 0b1000;  //
+    SSP1CON1bits.SSPM = 0b1000;  // Master I2C mode
     SSP1ADD = 0x13;
     SSP1CON3bits.SCIE = 0;
     SSP1CON3bits.PCIE = 0;
     SSP1CON1bits.SSPEN = 1; // enable I2C
     SSP1CON3bits.SDAHT = 0; // minimum 100 ns SDA pin hold time
-    SSP1DATPPS = 0x10;
-    SSP1CLKPPS = 0x11;
+    SSP1DATPPS = 0x10; // RC0 is SDA
+    SSP1CLKPPS = 0x11; // RC1 is SCL
 }
 
 void beginTransmission(unsigned char addr)
 {
-    SSP1CON2bits.SEN = 1;
+    SSP1CON2bits.SEN = 1; // START condition
     __delay_ms(1);
     SSP1BUF = addr;
     SSP1IF = 0;
