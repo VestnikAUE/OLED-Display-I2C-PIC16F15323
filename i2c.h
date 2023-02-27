@@ -14,7 +14,6 @@ void beginTransmission(unsigned char addr);
 void sendControlByte(unsigned char mode);
 void sendCommand(unsigned char command);
 void sendCommandwD(unsigned char command, unsigned char data);
-void sendCommandw2D(unsigned char command, unsigned char data1, unsigned char data2);
 void setupI2C();
 void endTransmission();
 
