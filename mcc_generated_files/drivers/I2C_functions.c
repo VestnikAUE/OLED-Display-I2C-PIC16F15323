@@ -27,46 +27,6 @@
 #include "I2C_functions.h"
 #include "../i2c1_master.h"
 
-
-//i2c1_operations_t wr1ByteCompleteHandler(void *p)
-//{
-//    I2C1_SetBuffer(p,1);
-//    I2C1_SetDataCompleteCallback(NULL,NULL);
-//    return I2C1_CONTINUE;
-//}
-
-//i2c1_operations_t rd1ByteCompleteHandler(void *p)
-//{
-//    I2C1_SetBuffer(p,1);
-//    I2C1_SetDataCompleteCallback(NULL,NULL);
-//    return I2C1_RESTART_READ;
-//}
-
-//i2c1_operations_t writeData(void *payload)
-//{
-//    pageWriteSize_t *pgData = payload;
-//    I2C1_SetBuffer(pgData->data,*pgData->dataSize);
-//    I2C1_SetDataCompleteCallback(NULL,NULL);
-//    return I2C1_CONTINUE;
-//}
-////////// writes a page
-//__bit writePage(uint8_t bank, uint8_t address, uint8_t *dataBlock, uint8_t dataBlockByteCount)
-//{
-//    pageWriteSize_t pgData = {0};
-//    pgData.data = dataBlock;
-//    pgData.dataSize = &dataBlockByteCount;
-//
-//    while(!I2C1_Open(EEPROM_ADDRESS+bank)) PORTCbits.RC4 = 1; // sit here until we get the bus..
-//    PORTCbits.RC4 = 0;
-//    I2C1_SetDataCompleteCallback(writeData,&pgData);
-//    I2C1_SetBuffer(&address,1);
-//    I2C1_SetAddressNackCallback(NULL,NULL); //NACK polling?
-//    I2C1_MasterWrite();
-//    while(I2C1_BUSY == I2C1_Close()); // sit here until finished.
-//    
-//    return (eeprom_lastError = 0);
-//}
-//
 i2c1_operations_t rdBlockCompleteHandler(void *payload)
 {
     pageWriteSize_t *pgData = payload;
