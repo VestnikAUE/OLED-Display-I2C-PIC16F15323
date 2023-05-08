@@ -23,8 +23,6 @@
 #ifndef I2C_FUNCTIONS_H
 #define I2C_FUNCTIONS_H
 
-//#include <stdio.h>
-//#include <stdint.h>
 #include <xc.h>
 #include "../i2c1_master.h"
 
@@ -36,18 +34,10 @@ typedef struct
 
 typedef enum {noError = 0, fail_busy, fail_timeout} eeprom_ErrNo_t;
 
-//typedef uint16_t EEPROM_ADDRESS_t;
-
-//#define PAGESIZE 16
 #define EEPROM_ADDRESS 0x50
-//#define MIN(a,b) (a<b?a:b)
 
 eeprom_ErrNo_t   eeprom_lastError; // 0 represents no error
 
-//i2c1_operations_t wr1ByteCompleteHandler(void *p);
-//i2c1_operations_t rd1ByteCompleteHandler(void *p);
-//i2c1_operations_t writeData(void *payload);
-//__bit writePage(uint8_t bank, uint8_t address, uint8_t *dataBlock, uint8_t dataBlockByteCount);
 i2c1_operations_t rdBlockCompleteHandler(void *payload);
 
 #endif  /*end of I2C_FUNCTIONS_H*/
